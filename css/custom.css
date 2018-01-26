@@ -1,0 +1,61 @@
+body {
+	background-color: #e3d1c1;
+}
+h1 {
+	text-align: center;
+	color: white;
+	font-family:"Indie Flower";
+	font-size: 56px;
+	background: #3c763e;
+	padding-top: 6px;
+}
+
+#generatedContent{
+	margin-top: 30px;
+}
+.meme {
+	margin: 10px;
+	position: relative;
+	float: left;
+}
+.meme h2 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color:white;
+	font-size: 50px;
+	font-weight: bold;
+	text-shadow: 3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.meme h2.top {
+	top: 5px;
+}
+
+.meme h2.bottom {
+	bottom: 5px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.deleteImage {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	display: none;
+}
+.meme:hover .deleteImage {
+	display: block;
+}
+.deleteImage i {
+	font-size: 100px;
+	color: red;
+	top: 50%;
+	cursor: pointer;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Zoran Savic</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    
+    <div class="container">
+     <h1>
+       Zoran's Meme
+     </h1>
+      <form id="generator">
+        <div class="form-group">
+          <label for="examplePicture">Image URL</label>
+          <input type="text" class="form-control" id="examplePicture"  placeholder="What's the URL for your meme image?">
+        </div>
+        <div class="form-group">
+          <label for="exampleTextTop">Text on Top</label>
+          <input type="text" class="form-control" id="exampleTextTop" placeholder="(Optional) What text do you want at the top of the meme?">
+        </div>
+        <div class="form-group">
+          <label for="exampleTextBottom">Text on Bottom</label>
+          <input type="text" class="form-control" id="exampleTextBottom"  placeholder="(Optional) What text do you want at the bottom of the meme?">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add Meme</button>
+
+      </form>
+
+      <div id="generatedContent">
+        
+      </div>
+
+      
+
+    </div><!-- /.container -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        
+        $('#generator').on('submit', function(e){
+          e.preventDefault();
+          
+          var imageUrl = $('#examplePicture').val();
+          var textTop = $('#exampleTextTop').val();
+          var textBottom = $('#exampleTextBottom').val();
+          
+          if (imageUrl === '') {
+            alert('Please enter image URL');
+            return false;
+          }
+
+          var html = '<div class="meme">';
+          if(textTop !== '') {
+            html += '<h2 class="top">' + textTop + '</h2>';
+          }
+          html += '<img src="' + imageUrl + '">';
+          if(textBottom !== '') {
+            html += '<h2 class="bottom">' + textBottom + '</h2>';
+          }
+          html += '<div class="deleteImage"><i class="glyphicon glyphicon-trash"></i></div>';
+          html += '</div>';
+          
+          $("#generatedContent").append( html );
+
+          $('#generator')[0].reset();
+
+        });
+
+        $('body').on('click', '.deleteImage i', function(){
+          $(this).parent().parent().remove();
+        });
+
+      });
+    </script>
+  </body>
+</html>
